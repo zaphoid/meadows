@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvx30dd30ks4s"]
+
+[ext_resource type="Script" path="res://Mainscene.cs" id="1_kkfpx"]
+[ext_resource type="Script" path="res://Entity.cs" id="1_vr0ik"]
+[ext_resource type="Script" path="res://TerrainGenerator.cs" id="2_ifrwj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_l0477"]
+
+[node name="Mainscene" type="Node3D"]
+script = ExtResource("1_kkfpx")
+
+[node name="Entity" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_l0477")
+script = ExtResource("1_vr0ik")
+
+[node name="Entity2" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_l0477")
+script = ExtResource("1_vr0ik")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.919135, 0.393942, 0, -0.393942, 0.919135, 0, 5, 15)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.525041, 0.0598209, -0.848972, -0.113203, 0.993572, 0, 0.843514, 0.0961063, 0.528438, -0.656481, 0.627512, 3.10751)
+
+[node name="Terrain" type="Node3D" parent="."]
+script = ExtResource("2_ifrwj")
