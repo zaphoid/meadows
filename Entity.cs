@@ -1,37 +1,30 @@
 using Godot;
 using System;
 
-public partial class Entity : CharacterBody3D  // Use CharacterBody3D in Godot 4.x
+public partial class Entity : CharacterBody3D
 {
-    [Export] public float Speed = 5.0f;  // Movement speed of the entity
-    private Vector3 velocity = Vector3.Zero;  // Entity movement velocity
-    private Vector3 direction;  // Movement direction
+    [Export] public float Speed = 5.0f;   // Movement speed of the entity
+    private Vector3 direction;  // Stores the current direction of movement
     private Random random = new Random();
 
     public override void _Ready()
     {
-        // Assign a random initial movement direction
+        // Assign a random direction when the entity is ready
         direction = new Vector3((float)(random.NextDouble() * 2 - 1), 0, (float)(random.NextDouble() * 2 - 1)).Normalized();
     }
 
     public override void _PhysicsProcess(double delta)
     {
-        // Apply movement to the entity
-        velocity = direction * Speed;
+        // Update the velocity based on the direction and speed
+        Velocity = direction * Speed;
 
-        // Use MoveAndSlide for smooth movement and collision detection
-        velocity = MoveAndSlide(velocity, Vector3.Up);
+        // Move the entity using MoveAndSlide (no parameters needed in Godot 4.x)
+        MoveAndSlide();
 
-        // Randomly change direction after some time
+        // Randomly change direction with a small chance every frame
         if (random.Next(100) < 1)  // Small chance to change direction
         {
             direction = new Vector3((float)(random.NextDouble() * 2 - 1), 0, (float)(random.NextDouble() * 2 - 1)).Normalized();
         }
     }
-
-    private Vector3 MoveAndSlide(Vector3 velocity, Vector3 up)
-    {
-        throw new NotImplementedException();
-    }
-
 }

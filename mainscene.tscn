@@ -1,18 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvx30dd30ks4s"]
+[gd_scene load_steps=3 format=3 uid="uid://dvx30dd30ks4s"]
 
 [ext_resource type="Script" path="res://Entity.cs" id="1_vr0ik"]
 [ext_resource type="Script" path="res://TerrainGenerator.cs" id="2_ifrwj"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_l0477"]
-
 [node name="Mainscene" type="Node3D"]
 
-[node name="Entity" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_l0477")
+[node name="Entity" type="CharacterBody3D" parent="."]
 script = ExtResource("1_vr0ik")
 
-[node name="Entity2" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_l0477")
+[node name="Entity2" type="CharacterBody3D" parent="."]
 script = ExtResource("1_vr0ik")
 
 [node name="Camera3D" type="Camera3D" parent="."]
